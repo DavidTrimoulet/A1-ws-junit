@@ -5,8 +5,11 @@ public class Hit {
 	private final int			range;
 	private final TypeHit	typeHit;
 
-	public Hit(final int strength, final int range, final TypeHit typeHit) {
-		this.strength = strength;
+	public Hit(final int strength, final int range, final TypeHit typeHit) throws Exception {
+		if(strength > 100 || strength < 0){
+                    throw new Exception("Strength out of range");
+                }
+                this.strength = strength;
 		this.range = range;
 		this.typeHit = typeHit;
 	}
@@ -22,4 +25,9 @@ public class Hit {
 	public TypeHit getTypeHit() {
 		return this.typeHit;
 	}
+
+    public int doubleRange() {
+        return this.range * 2;
+    }
+
 }
